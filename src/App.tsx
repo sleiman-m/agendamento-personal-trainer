@@ -37,7 +37,7 @@ function App() {
               className="h-20 w-20 rounded-full object-cover"
             />
             <div className="md:hidden">
-              <p className="text-xs font-semibold uppercase tracking-wide text-fosco">Aluno</p>
+              <p className="text-xs font-semibold uppercase tracking-wide text-fosco">Aluno(a)</p>
               <p className="text-lg font-bold">Sleiman</p>
             </div>
           </div>
@@ -68,8 +68,119 @@ function App() {
         </a>
       </section>
 
-      {/* Meus treinos */}
-      {/* Próximas aulas */}
+      <div className="mt-6 flex flex-col gap-6 lg:flex-row lg:items-start">
+      <section className="rounded-2xl bg-gray-50 p-5 shadow-md lg:w-2/3">
+        <h2 className="text-2xl font-bold">Meus treinos</h2>
+
+        <div className="mt-4 flex flex-wrap gap-2">
+          <button className="rounded-full bg-fosco px-4 py-1.5 text-sm font-semibold text-white">Todos</button>
+          <button className="rounded-full bg-white px-4 py-1.5 text-sm shadow-sm">Superiores 1</button>
+          <button className="rounded-full bg-white px-4 py-1.5 text-sm shadow-sm">Inferiores 1</button>
+          <button className="rounded-full bg-white px-4 py-1.5 text-sm shadow-sm">Superiores 2</button>
+          <button className="rounded-full bg-white px-4 py-1.5 text-sm shadow-sm">Inferiores 2</button>
+          <button className="rounded-full bg-white px-4 py-1.5 text-sm shadow-sm">Cardio</button>
+        </div>
+
+        <div className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <article className="flex gap-3 rounded-xl bg-white p-3 shadow-sm md:flex-col">
+            <img
+              src="/exercicios/supino-reto.jpg"
+              alt="Supino reto"
+              className="h-20 w-20 shrink-0 rounded-lg object-cover md:h-36 md:w-full"
+            />
+            <div>
+              <h3 className="font-bold lg:min-h-12">Supino reto</h3>
+              <span className="mt-1 inline-block rounded-full bg-gray-100 px-2.5 py-0.5 text-xs text-zinc-500">
+                Treino: Superiores 1
+              </span>
+              <p className="mt-2 text-sm font-semibold">4 séries × 12 repetições</p>
+            </div>
+          </article>
+          <article className="flex gap-3 rounded-xl bg-white p-3 shadow-sm md:flex-col">
+            <img src="/exercicios/remada-curvada.jpg" alt="Remada curvada" className="h-20 w-20 shrink-0 rounded-lg object-cover md:h-36 md:w-full" />
+            <div>
+              <h3 className="font-bold lg:min-h-12">Remada curvada</h3>
+              <span className="mt-1 inline-block rounded-full bg-gray-100 px-2.5 py-0.5 text-xs text-zinc-500">Treino: Superiores 1</span>
+              <p className="mt-2 text-sm font-semibold">4 séries × 12 repetições</p>
+            </div>
+          </article>
+
+          <article className="flex gap-3 rounded-xl bg-white p-3 shadow-sm md:flex-col">
+            <img src="/exercicios/desenvolvimento-halteres.jpg" alt="Desenvolvimento com halteres" className="h-20 w-20 shrink-0 rounded-lg object-cover md:h-36 md:w-full" />
+            <div>
+              <h3 className="font-bold lg:min-h-12">Desenvolvimento com halteres</h3>
+              <span className="mt-1 inline-block rounded-full bg-gray-100 px-2.5 py-0.5 text-xs text-zinc-500">Treino: Superiores 2</span>
+              <p className="mt-2 text-sm font-semibold">3 séries × 12 repetições</p>
+            </div>
+          </article>
+
+          <article className="flex gap-3 rounded-xl bg-white p-3 shadow-sm md:flex-col">
+            <img src="/exercicios/rosca-direta.jpg" alt="Rosca direta" className="h-20 w-20 shrink-0 rounded-lg object-cover md:h-36 md:w-full" />
+            <div>
+              <h3 className="font-bold lg:min-h-12">Rosca direta</h3>
+              <span className="mt-1 inline-block rounded-full bg-gray-100 px-2.5 py-0.5 text-xs text-zinc-500">Treino: Superiores 1</span>
+              <p className="mt-2 text-sm font-semibold">3 séries × 12 repetições</p>
+            </div>
+          </article>
+
+          <article className="flex gap-3 rounded-xl bg-white p-3 shadow-sm md:flex-col">
+            <img src="/exercicios/triceps-testa.jpg" alt="Tríceps testa" className="h-20 w-20 shrink-0 rounded-lg object-cover md:h-36 md:w-full" />
+            <div>
+              <h3 className="font-bold lg:min-h-12">Tríceps testa</h3>
+              <span className="mt-1 inline-block rounded-full bg-gray-100 px-2.5 py-0.5 text-xs text-zinc-500">Treino: Superiores 2</span>
+              <p className="mt-2 text-sm font-semibold">3 séries × 12 repetições</p>
+            </div>
+          </article>
+
+          <article className="flex gap-3 rounded-xl bg-white p-3 shadow-sm md:flex-col">
+            <img src="/exercicios/elevacao-lateral.jpg" alt="Elevação lateral" className="h-20 w-20 shrink-0 rounded-lg object-cover md:h-36 md:w-full" />
+            <div>
+              <h3 className="font-bold lg:min-h-12">Elevação lateral</h3>
+              <span className="mt-1 inline-block rounded-full bg-gray-100 px-2.5 py-0.5 text-xs text-zinc-500">Treino: Superiores 2</span>
+              <p className="mt-2 text-sm font-semibold">3 séries × 15 repetições</p>
+            </div>
+          </article>
+
+          <article className="flex gap-3 rounded-xl bg-white p-3 shadow-sm md:flex-col">
+            <img src="/exercicios/agachamento.jpg" alt="Agachamento" className="h-20 w-20 shrink-0 rounded-lg object-cover md:h-36 md:w-full" />
+            <div>
+              <h3 className="font-bold lg:min-h-12">Agachamento</h3>
+              <span className="mt-1 inline-block rounded-full bg-gray-100 px-2.5 py-0.5 text-xs text-zinc-500">Treino: Inferiores 1</span>
+              <p className="mt-2 text-sm font-semibold">4 séries × 10 repetições</p>
+            </div>
+          </article>
+
+          <article className="flex gap-3 rounded-xl bg-white p-3 shadow-sm md:flex-col">
+            <img src="/exercicios/leg-press.jpg" alt="Leg press" className="h-20 w-20 shrink-0 rounded-lg object-cover md:h-36 md:w-full" />
+            <div>
+              <h3 className="font-bold lg:min-h-12">Leg press</h3>
+              <span className="mt-1 inline-block rounded-full bg-gray-100 px-2.5 py-0.5 text-xs text-zinc-500">Treino: Inferiores 2</span>
+              <p className="mt-2 text-sm font-semibold">4 séries × 12 repetições</p>
+            </div>
+          </article>
+
+          <article className="flex gap-3 rounded-xl bg-white p-3 shadow-sm md:flex-col">
+            <img src="/exercicios/esteira.jpg" alt="Esteira" className="h-20 w-20 shrink-0 rounded-lg object-cover md:h-36 md:w-full" />
+            <div>
+              <h3 className="font-bold lg:min-h-12">Esteira</h3>
+              <span className="mt-1 inline-block rounded-full bg-gray-100 px-2.5 py-0.5 text-xs text-zinc-500">Treino: Cardio</span>
+              <p className="mt-2 text-sm font-semibold">3 séries × 5 minutos</p>
+            </div>
+          </article>
+
+          <article className="flex gap-3 rounded-xl bg-white p-3 shadow-sm md:flex-col">
+            <img src="/exercicios/bicicleta.jpg" alt="Bicicleta" className="h-20 w-20 shrink-0 rounded-lg object-cover md:h-36 md:w-full" />
+            <div>
+              <h3 className="font-bold lg:min-h-12">Bicicleta</h3>
+              <span className="mt-1 inline-block rounded-full bg-gray-100 px-2.5 py-0.5 text-xs text-zinc-500">Treino: Cardio</span>
+              <p className="mt-2 text-sm font-semibold">30 minutos</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+</div>
+
 </main>
 
       {/* footer */}
