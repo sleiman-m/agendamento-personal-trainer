@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+@theme {
+  --color-fosco: #b24a4e;
+  --color-fosco-claro: #c4666a;
+  --color-fosco-escuro: #983e42;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+}
