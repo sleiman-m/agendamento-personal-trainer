@@ -200,9 +200,71 @@ function App() {
      {/* SEÇÃO: PRÓXIMAS AULAS */}
 
       <section className="rounded-2xl bg-gray-50 p-5 shadow-md lg:w-1/3">
-        <h2 className="text-2xl font-bold">Próximas aulas</h2>
-        {/* aulas */}
+        <div className="md:flex md:items-center md:justify-between lg:block">
+          <h2 className="text-2xl font-bold">Próximas aulas</h2>
+
+          <a
+            href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Quero%20agendar%20minha%20pr%C3%B3xima%20aula."
+            target="_blank"
+            rel="noreferrer"
+            className="mt-4 block rounded-full bg-fosco px-5 py-2.5 text-center text-sm font-semibold text-white shadow transition hover:bg-fosco-escuro"
+          >
+            Agendar próxima aula
+          </a>
+        </div>
+        
+        <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-3 lg:grid-cols-1">
+          <article className="flex gap-3 rounded-xl bg-white p-3 shadow-sm">
+            <img src="/aulas/academia.jpg" alt="Academia" className="h-16 w-16 shrink-0 rounded-lg object-cover" />
+            <div>
+              <p className="font-bold">12/11 · 18:00</p>
+              <p className="text-sm text-zinc-500">Local: Academia Força Total</p>
+              <a
+                href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Quero%20reagendar%20minha%20aula%20de%2012%2F11."
+                target="_blank"
+                rel="noreferrer"
+                className="mt-2 inline-block rounded-full border border-fosco px-3 py-1 text-xs font-semibold text-fosco transition hover:bg-fosco hover:text-white"
+              >
+                Reagendar
+              </a>
+            </div>
+          </article>
+
+          <article className="flex gap-3 rounded-xl bg-white p-3 shadow-sm">
+            <img src="/aulas/parque.jpg" alt="Parque" className="h-16 w-16 shrink-0 rounded-lg object-cover" />
+            <div>
+              <p className="font-bold">16/11 · 07:00</p>
+              <p className="text-sm text-zinc-500">Local: Parque Municipal</p>
+              <a
+                href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Quero%20reagendar%20minha%20aula%20de%2016%2F11."
+                target="_blank"
+                rel="noreferrer"
+                className="mt-2 inline-block rounded-full border border-fosco px-3 py-1 text-xs font-semibold text-fosco transition hover:bg-fosco hover:text-white"
+              >
+                Reagendar
+              </a>
+            </div>
+          </article>
+
+          <article className="flex gap-3 rounded-xl bg-white p-3 shadow-sm">
+            <img src="/aulas/academia.jpg" alt="Academia" className="h-16 w-16 shrink-0 rounded-lg object-cover" />
+            <div>
+              <p className="font-bold">19/11 · 18:00</p>
+              <p className="text-sm text-zinc-500">Local: Academia Força Total</p>
+              <a
+                href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Quero%20reagendar%20minha%20aula%20de%2019%2F11."
+                target="_blank"
+                rel="noreferrer"
+                className="mt-2 inline-block rounded-full border border-fosco px-3 py-1 text-xs font-semibold text-fosco transition hover:bg-fosco hover:text-white"
+              >
+                Reagendar
+              </a>
+            </div>
+          </article>
+        </div>
       </section>
+
+
 </div>
 
 </main>
