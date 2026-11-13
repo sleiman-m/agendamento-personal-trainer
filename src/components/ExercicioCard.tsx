@@ -2,11 +2,14 @@ import type { Exercicio } from "../data/types";
 
 type ExercicioCardProps = {
   exercicio: Exercicio;
+  className?: string;
 };
 
-function ExercicioCard({ exercicio }: ExercicioCardProps) {
+function ExercicioCard({ exercicio, className = "" }: ExercicioCardProps) {
   return (
-    <article className="flex gap-3 rounded-xl bg-white p-3 shadow-sm md:flex-col">
+    <article
+      className={`flex gap-3 rounded-xl bg-white p-3 shadow-sm md:flex-col ${className}`}
+    >
       <img
         src={exercicio.imagem}
         alt={exercicio.nome}
