@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { exercicios, treinos } from "./data/exercicios";
+import { useEffect, useState } from "react";
+import type { Exercicio } from "./data/types";
+import { treinos } from "./data/treinos";
 import { aulas } from "./data/aulas";
 import Header from "./components/Header";
 import PerfilAluno from "./components/PerfilAluno";
@@ -10,11 +11,22 @@ import Footer from "./components/Footer";
 function App() {
   const [treinoSelecionado, setTreinoSelecionado] = useState("Todos");
   const [mostrarTodos, setMostrarTodos] = useState(false);
+  const [exercicios, setExercicios] = useState<Exercicio[]>([]);
 
   function selecionarTreino(treino: string) {
     setTreinoSelecionado(treino);
     setMostrarTodos(false);
   }
+
+  useEffect(() => {
+    async function carregarExercicios() {
+      const resposta = await fetch("/exercicios.json");
+      const dados: Exercicio[] = await resposta.json();
+      setExercicios(dados);
+    }
+
+    carregarExercicios();
+  }, []);
 
   const exerciciosFiltrados =
     treinoSelecionado === "Todos"
