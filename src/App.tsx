@@ -7,6 +7,7 @@ import PerfilAluno from "./components/PerfilAluno";
 import SecaoTreinos from "./components/SecaoTreinos";
 import ProximasAulas from "./components/ProximasAulas";
 import Footer from "./components/Footer";
+import PaginaEsqueleto from "./components/PaginaEsqueleto";
 
 function App() {
   const [treinoSelecionado, setTreinoSelecionado] = useState("Todos");
@@ -44,6 +45,11 @@ function App() {
       ? exercicios
       : exercicios.filter((exercicio) => exercicio.treino === treinoSelecionado);
 
+  
+  if (carregando) {
+    return <PaginaEsqueleto />;
+  }    
+
   return (
     <div className="relative min-h-screen bg-gray-200 text-zinc-800">
       <div className="absolute inset-x-0 top-0 h-150 bg-linear-to-b from-fosco via-fosco-claro to-gray-200 md:h-96" />
@@ -58,7 +64,6 @@ function App() {
             exercicios={exerciciosFiltrados}
             treinos={treinos}
             treinoSelecionado={treinoSelecionado}
-            carregando={carregando}
             erro={erro}
             mostrarTodos={mostrarTodos}
             onCarregarMais={() => setMostrarTodos(true)}
