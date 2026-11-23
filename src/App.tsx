@@ -10,11 +10,12 @@ import Footer from "./components/Footer";
 import PaginaEsqueleto from "./components/PaginaEsqueleto";
 
 function App() {
-  const [treinoSelecionado, setTreinoSelecionado] = useState("Todos");
-  const [mostrarTodos, setMostrarTodos] = useState(false);
   const [exercicios, setExercicios] = useState<Exercicio[]>([]);
   const [carregando, setCarregando] = useState(true);
   const [erro, setErro] = useState("");
+  const [treinoSelecionado, setTreinoSelecionado] = useState("Todos");
+  const [mostrarTodos, setMostrarTodos] = useState(false);
+  const [busca, setBusca] = useState("");
 
   function selecionarTreino(treino: string) {
     setTreinoSelecionado(treino);
@@ -40,15 +41,18 @@ function App() {
     carregarExercicios();
   }, []);
 
-  const exerciciosFiltrados =
-    treinoSelecionado === "Todos"
-      ? exercicios
-      : exercicios.filter((exercicio) => exercicio.treino === treinoSelecionado);
+  const termo = busca.trim().toLowerCase();
 
-  
+  const exerciciosFiltrados = exercicios.filter((exercicio) => {
+    const bateTreino =
+      treinoSelecionado === "Todos" || exercicio.treino === treinoSelecionado;
+    const bateBusca = exercicio.nome.toLowerCase().includes(termo);
+    return bateTreino && bateBusca;
+  });
+
   if (carregando) {
     return <PaginaEsqueleto />;
-  }    
+  }
 
   return (
     <div className="relative min-h-screen bg-gray-200 text-zinc-800">
@@ -64,10 +68,12 @@ function App() {
             exercicios={exerciciosFiltrados}
             treinos={treinos}
             treinoSelecionado={treinoSelecionado}
+            onSelecionarTreino={selecionarTreino}
             erro={erro}
+            busca={busca}
+            onBuscar={setBusca}
             mostrarTodos={mostrarTodos}
             onCarregarMais={() => setMostrarTodos(true)}
-            onSelecionarTreino={selecionarTreino}
           />
           <ProximasAulas aulas={aulas} />
         </div>
