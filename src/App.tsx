@@ -12,6 +12,7 @@ function App() {
   const [treinoSelecionado, setTreinoSelecionado] = useState("Todos");
   const [mostrarTodos, setMostrarTodos] = useState(false);
   const [exercicios, setExercicios] = useState<Exercicio[]>([]);
+  const [carregando, setCarregando] = useState(true);
 
   function selecionarTreino(treino: string) {
     setTreinoSelecionado(treino);
@@ -20,9 +21,13 @@ function App() {
 
   useEffect(() => {
     async function carregarExercicios() {
-      const resposta = await fetch("/exercicios.json");
-      const dados: Exercicio[] = await resposta.json();
-      setExercicios(dados);
+      try {
+        const resposta = await fetch("/exercicios.json");
+        const dados: Exercicio[] = await resposta.json();
+        setExercicios(dados);
+      } finally {
+        setCarregando(false);
+      }
     }
 
     carregarExercicios();
@@ -32,6 +37,7 @@ function App() {
     treinoSelecionado === "Todos"
       ? exercicios
       : exercicios.filter((exercicio) => exercicio.treino === treinoSelecionado);
+
 
   return (
     <div className="relative min-h-screen bg-gray-200 text-zinc-800">
@@ -47,6 +53,7 @@ function App() {
             exercicios={exerciciosFiltrados}
             treinos={treinos}
             treinoSelecionado={treinoSelecionado}
+            carregando={carregando}
             mostrarTodos={mostrarTodos}
             onCarregarMais={() => setMostrarTodos(true)}
             onSelecionarTreino={selecionarTreino}

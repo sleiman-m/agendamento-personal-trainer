@@ -7,6 +7,7 @@ type SecaoTreinosProps = {
   treinos: string[];
   treinoSelecionado: string;
   onSelecionarTreino: (treino: string) => void;
+  carregando: boolean;
   mostrarTodos: boolean;
   onCarregarMais: () => void;
 };
@@ -23,6 +24,7 @@ function SecaoTreinos({
   treinos,
   treinoSelecionado,
   onSelecionarTreino,
+  carregando,
   mostrarTodos,
   onCarregarMais,
 }: SecaoTreinosProps) {
@@ -38,23 +40,31 @@ function SecaoTreinos({
         onSelecionarTreino={onSelecionarTreino}
       />
 
-      <div className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {exercicios.map((exercicio, index) => (
-          <ExercicioCard
-            key={exercicio.id}
-            exercicio={exercicio}
-            className={limitarLista ? classeLimite(index) : ""}
-          />
-        ))}
-      </div>
+            {carregando && (
+        <p className="mt-5 text-center text-zinc-500">Carregando treinos...</p>
+      )}
 
-      {limitarLista && (
-        <button
-          onClick={onCarregarMais}
-          className="mx-auto mt-5 block text-sm font-semibold text-fosco hover:underline lg:hidden"
-        >
-          Carregar Mais
-        </button>
+      {!carregando && (
+        <>
+          <div className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {exercicios.map((exercicio, index) => (
+              <ExercicioCard
+                key={exercicio.id}
+                exercicio={exercicio}
+                className={limitarLista ? classeLimite(index) : ""}
+              />
+            ))}
+          </div>
+
+          {limitarLista && (
+            <button
+              onClick={onCarregarMais}
+              className="mx-auto mt-5 block text-sm font-semibold text-fosco hover:underline lg:hidden"
+            >
+              Carregar Mais
+            </button>
+          )}
+        </>
       )}
     </section>
   );
