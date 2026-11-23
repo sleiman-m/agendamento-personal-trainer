@@ -8,6 +8,7 @@ type SecaoTreinosProps = {
   treinoSelecionado: string;
   onSelecionarTreino: (treino: string) => void;
   carregando: boolean;
+  erro: string;
   mostrarTodos: boolean;
   onCarregarMais: () => void;
 };
@@ -25,6 +26,7 @@ function SecaoTreinos({
   treinoSelecionado,
   onSelecionarTreino,
   carregando,
+  erro,
   mostrarTodos,
   onCarregarMais,
 }: SecaoTreinosProps) {
@@ -40,11 +42,17 @@ function SecaoTreinos({
         onSelecionarTreino={onSelecionarTreino}
       />
 
-            {carregando && (
+      {carregando && (
         <p className="mt-5 text-center text-zinc-500">Carregando treinos...</p>
       )}
 
-      {!carregando && (
+      {erro && (
+        <p className="mt-5 rounded-lg bg-red-100 p-4 text-center text-red-700">
+          {erro}
+        </p>
+      )}
+
+      {!carregando && !erro && (
         <>
           <div className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {exercicios.map((exercicio, index) => (

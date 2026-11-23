@@ -13,6 +13,7 @@ function App() {
   const [mostrarTodos, setMostrarTodos] = useState(false);
   const [exercicios, setExercicios] = useState<Exercicio[]>([]);
   const [carregando, setCarregando] = useState(true);
+  const [erro, setErro] = useState("");
 
   function selecionarTreino(treino: string) {
     setTreinoSelecionado(treino);
@@ -23,8 +24,13 @@ function App() {
     async function carregarExercicios() {
       try {
         const resposta = await fetch("/exercicios.json");
+        if (!resposta.ok) {
+          throw new Error("Resposta inválida do servidor");
+        }
         const dados: Exercicio[] = await resposta.json();
         setExercicios(dados);
+      } catch {
+        setErro("Não foi possível carregar os treinos. Tente novamente mais tarde.");
       } finally {
         setCarregando(false);
       }
@@ -37,7 +43,6 @@ function App() {
     treinoSelecionado === "Todos"
       ? exercicios
       : exercicios.filter((exercicio) => exercicio.treino === treinoSelecionado);
-
 
   return (
     <div className="relative min-h-screen bg-gray-200 text-zinc-800">
@@ -54,6 +59,7 @@ function App() {
             treinos={treinos}
             treinoSelecionado={treinoSelecionado}
             carregando={carregando}
+            erro={erro}
             mostrarTodos={mostrarTodos}
             onCarregarMais={() => setMostrarTodos(true)}
             onSelecionarTreino={selecionarTreino}
