@@ -1,12 +1,16 @@
 import type { Exercicio } from "../data/types";
 import ExercicioCard from "./ExercicioCard";
 import FiltroTreinos from "./FiltroTreinos";
+import CampoBusca from "./CampoBusca";
 
 type SecaoTreinosProps = {
   exercicios: Exercicio[];
   treinos: string[];
   treinoSelecionado: string;
   onSelecionarTreino: (treino: string) => void;
+  erro: string;
+  busca: string;
+  onBuscar: (busca: string) => void;
   mostrarTodos: boolean;
   onCarregarMais: () => void;
 };
@@ -23,14 +27,20 @@ function SecaoTreinos({
   treinos,
   treinoSelecionado,
   onSelecionarTreino,
+  erro,
+  busca,
+  onBuscar,
   mostrarTodos,
   onCarregarMais,
 }: SecaoTreinosProps) {
-  const limitarLista = treinoSelecionado === "Todos" && !mostrarTodos;
+  const limitarLista =
+    treinoSelecionado === "Todos" && busca.trim() === "" && !mostrarTodos;
 
   return (
     <section className="rounded-2xl bg-gray-50 p-5 shadow-md lg:w-2/3">
       <h2 className="text-2xl font-bold">Meus treinos</h2>
+
+      <CampoBusca valor={busca} onMudar={onBuscar} />
 
       <FiltroTreinos
         treinos={treinos}
@@ -38,23 +48,39 @@ function SecaoTreinos({
         onSelecionarTreino={onSelecionarTreino}
       />
 
-      <div className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {exercicios.map((exercicio, index) => (
-          <ExercicioCard
-            key={exercicio.id}
-            exercicio={exercicio}
-            className={limitarLista ? classeLimite(index) : ""}
-          />
-        ))}
-      </div>
+      {erro && (
+        <p className="mt-5 rounded-lg bg-red-100 p-4 text-center text-red-700">
+          {erro}
+        </p>
+      )}
 
-      {limitarLista && (
-        <button
-          onClick={onCarregarMais}
-          className="mx-auto mt-5 block text-sm font-semibold text-fosco hover:underline lg:hidden"
-        >
-          Carregar Mais
-        </button>
+      {!erro && exercicios.length === 0 && (
+        <p className="mt-5 text-center text-zinc-500">
+          Nenhum exercício encontrado.
+        </p>
+      )}
+
+      {!erro && (
+        <>
+          <div className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {exercicios.map((exercicio, index) => (
+              <ExercicioCard
+                key={exercicio.id}
+                exercicio={exercicio}
+                className={limitarLista ? classeLimite(index) : ""}
+              />
+            ))}
+          </div>
+
+          {limitarLista && (
+            <button
+              onClick={onCarregarMais}
+              className="mx-auto mt-5 block text-sm font-semibold text-fosco hover:underline lg:hidden"
+            >
+              Carregar Mais
+            </button>
+          )}
+        </>
       )}
     </section>
   );
